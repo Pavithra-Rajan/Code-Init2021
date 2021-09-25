@@ -1,4 +1,4 @@
-const FormEntry = () => {
+const FormEntry = ({final,setFinal}) => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         const a=e.target.A.value;
@@ -14,8 +14,7 @@ const FormEntry = () => {
         const r=e.target.R.value;
         const s=e.target.S.value;
         const t=e.target.T.value;
-        const final={"A":a,"B":b,"C":c,"D":d,"E":ee,"F":f,"G":g,"H":h,"P":p,"Q":q,"R":r,"S":s,"T":t};
-        console.log(final);
+        setFinal({"A":a,"B":b,"C":c,"D":d,"E":ee,"F":f,"G":g,"H":h,"P":p,"Q":q,"R":r,"S":s,"T":t});
         e.target.reset();
     }
     

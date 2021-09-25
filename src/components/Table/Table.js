@@ -1,28 +1,27 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
-export default function Table() {
-    let model1={"A":"OS","B":"DBMS"}
+export default function Table({final}) {
     let slotlist=[ 
         {
             "day":"Monday",
-            "slots":["A","F","D","B","G","E+","-","-","H"]
+            "slots":["A","F","D","B","G","E","-","-","H"]
         },
         {
             "day":"Tuesday",
-            "slots":["B","G","E","C","A+","F+","-","-","H"]
+            "slots":["B","G","E","C","A","F","-","-","H"]
         },
         {
             "day":"Wednesday",
-            "slots":["C","A","F","D","H","G+","-","-","E+"]
+            "slots":["C","A","F","D","H","G","-","-","E"]
         },
         {
             "day":"Thursday",
-            "slots":["D","B","G","E","-","C+","-","-","G+"]
+            "slots":["D","B","G","E","-","C","-","-","G"]
         },
         {
             "day":"Friday",
-            "slots":["E","C","A","F","H+","B+","-","-","D+"]
+            "slots":["E","C","A","F","H","B","-","-","D"]
         }
     ]
     const [model2, setModel2] = useState([
@@ -48,24 +47,49 @@ export default function Table() {
         }
     ]);
     useEffect(()=>{
-        console.log("buha")
-        model1tomodel2();
-    },[])
+        console.log("buha",final)
+        finaltomodel2();
+    },[final])
 
-    function model1tomodel2()
-    {   console.log("before",model2)    
-        var model2temp=model2.map(item=>{return Object.assign({},item)})
-        console.log("after",model2temp)    
+    function finaltomodel2()
+    {
+        var model2temp=[
+            {
+                "day":"Monday",
+                "slots":[]
+            },
+            {
+                "day":"Tuesday",
+                "slots":[]
+            },
+            {
+                "day":"Wednesday",
+                "slots":[]
+            },
+            {
+                "day":"Thursday",
+                "slots":[]
+            },
+            {
+                "day":"Friday",
+                "slots":[]
+            }]
         for(var j=0;j<5;j++)
         {
             for(var i=0;i<9;i++)
             {
                 if(slotlist[j]["slots"][i]=='-')
-                    model2[j]["slots"].push("-")
-                else if(!(slotlist[j]["slots"][i] in model1))
-                    model2[j]["slots"].push("-")
+                {
+                    model2temp[j]["slots"].push("-")
+                }
+                else if(final[slotlist[j]["slots"][i]]=="")
+                {
+                    model2temp[j]["slots"].push("-")
+                }
                 else
-                    model2[j]["slots"].push(model1[slotlist[j]["slots"][i]])
+                {
+                    model2temp[j]["slots"].push(final[slotlist[j]["slots"][i]])
+                }
             }
         }
         console.log("temp",model2temp)
