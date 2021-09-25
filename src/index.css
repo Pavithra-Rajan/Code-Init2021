@@ -1,0 +1,99 @@
+@import url('http://fonts.googleapis.com/css?family=Lato:400,700');
+body
+{
+  background-color: #f6f0ff;
+}
+.two-col {
+  overflow: hidden;/* Makes this div contain its floats */
+}
+
+.two-col .col1,
+.two-col .col2 {
+  width: 49%;
+}
+
+.two-col .col1 {
+  float: left;
+}
+
+.two-col .col2 {
+  float: right;
+}
+
+.two-col label {
+  display: block;
+}
+input[type=submit] {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+
+  padding:5px 15px; 
+  background:#5D389D; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+  color: #ddd;
+}
+.entry {
+  max-width: 400px;
+  margin-left: 10%;
+  text-align: left;
+}
+.entry label {
+  text-align: left;
+  display: block;
+}
+.entry h2 {
+  font-size: 20px;
+  color: #5D389D;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 30px;
+  align-items: left;
+}
+h1{
+  color: #2d1950;
+  font-size: 40px;
+  font-family: 'Lato', sans-serif;
+}
+.entry input, .entry textarea, .entry select {
+  font-family: 'Lato', sans-serif;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.entry button {
+  background: #5D389D;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.pic
+{
+  align-items: left;
+}
+.pic img {
+  display: block;
+  width: 600px;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.rowC
+{
+  display: flex;
+  margin-top: 2%;
+}
+.fm {
+  max-width: 400px;
+  margin-left: 10%;
+}  
+.pc
+{
+  margin-left: 15%;
+}
