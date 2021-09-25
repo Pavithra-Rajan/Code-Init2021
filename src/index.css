@@ -134,3 +134,9 @@ table tr
 .right{
   border-left: none;
 }
+.container{
+  padding: 50px;
+}
+.darkcell{
+  background-color: #280e53;
+}
