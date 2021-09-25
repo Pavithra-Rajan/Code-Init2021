@@ -43,12 +43,12 @@ export default function Table({final,model2,setModel2}) {
             {
                 if(tslotlist[j]["slots"][i]=='-')
                 {
-                    model2temp[j]["slots"].push("-")
+                    model2temp[j]["slots"].push("")
                     tr[j+1].children[1+i].classList.add('darkcell')
                 }
                 else if(final[tslotlist[j]["slots"][i]]=="")
                 {
-                    model2temp[j]["slots"].push("-")
+                    model2temp[j]["slots"].push("")
                     tr[j+1].children[1+i].classList.add('darkcell')
                 }
                 else
@@ -114,9 +114,9 @@ export default function Table({final,model2,setModel2}) {
                     
                     {tz=="uae"&&<>
                     <th>06:30-07:30</th>
-                    <th>07:30-08:45</th>
+                    <th>07:30-08:30</th>
                     <th>08:45-09:45</th>
-                    <th>09:45-11:30</th>
+                    <th>09:45-10:45</th>
                     <th>11:30-12:30</th>
                     <th>12:30-13:30</th>
                     <th>13:30-14:30</th>
@@ -126,9 +126,9 @@ export default function Table({final,model2,setModel2}) {
                     
                     {tz=="qatar"&&<>
                     <th>05:30-06:30</th>
-                    <th>06:30-07:45</th>
+                    <th>06:30-07:30</th>
                     <th>07:45-08:45</th>
-                    <th>08:45-10:30</th>
+                    <th>08:45-9:45</th>
                     <th>10:30-11:30</th>
                     <th>11:30-12:30</th>
                     <th>12:30-13:30</th>
@@ -139,14 +139,14 @@ export default function Table({final,model2,setModel2}) {
                 {model2.map(data=>(<tr>
                     <th>{data.day}</th>
                     <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[0]}</p></td>
-                    <td>{data.slots[1]}</td>
-                    <td>{data.slots[2]}</td>
-                    <td>{data.slots[3]}</td>
-                    <td>{data.slots[4]}</td>
-                    <td>{data.slots[5]}</td>
-                    <td>{data.slots[6]}</td>
-                    <td>{data.slots[7]}</td>
-                    <td>{data.slots[8]}</td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[1]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[2]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[3]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[4]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[5]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[6]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[7]}</p></td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[8]}</p></td>
                 </tr>))
                 }
             </table>
