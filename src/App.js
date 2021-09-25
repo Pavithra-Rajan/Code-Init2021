@@ -1,7 +1,4 @@
 import React from 'react';
-import jsPDF from "jspdf";
-import "jspdf-autotable";
-import './App.css'
 
 import './App.css';
 import Entry from './entry';
@@ -16,7 +13,7 @@ function App() {
       <h1>TimeTable App</h1>
       <Entry final={final} setFinal={setFinal}/>
       <Table final={final}></Table>
-      {/* <Print final={final}></Print> */}
+      <Print final={final}></Print>
     </div>
   );
 }
