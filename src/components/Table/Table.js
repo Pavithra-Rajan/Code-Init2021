@@ -95,8 +95,9 @@ export default function Table({final}) {
         console.log("temp",model2temp)
         setModel2(model2temp,()=>{console.log("done")})
     }
+    
     return (
-        <div>
+        <div className="timetable">
              <table>
                 <tr>
                     <th></th>
@@ -112,7 +113,7 @@ export default function Table({final}) {
                 </tr>
                 {model2.map(data=>(<tr>
                     <th>{data.day}</th>
-                    <td>{data.slots[0]}</td>
+                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[0]}</p></td>
                     <td>{data.slots[1]}</td>
                     <td>{data.slots[2]}</td>
                     <td>{data.slots[3]}</td>
