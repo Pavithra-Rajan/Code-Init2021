@@ -98,3 +98,15 @@ h1{
 {
   margin-left: 15%;
 }
+
+table th
+{
+  background-color: #5D389D;
+  color: white;
+  border-collapse: collapse;
+  padding: 10px 20px;
+}
+table tr
+{
+  background-color: #ffffff ;
+}
