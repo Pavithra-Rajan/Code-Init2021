@@ -1,47 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 
-export default function Table() {/* 
+export default function Table() {
     let model1={"A":"OS","B":"DBMS"}
-    let model2={
-        "Monday":[],
-        "Tuesday":[],
-        "Wednesday":[],
-        "Thursday":[],
-        "Friday":[]
-    }
-    let slotlist={
-        "Monday":["A","F","D","B","G","E+","-","-","H"],
-        "Tuesday":["B","G","E","C","A+","F+","-","-","H"],
-        "Wednesday":["C","A","F","D","H","G+","-","-","E+"],
-        "Thursday":["D","B","G","E","-","C+","-","-","G+"],
-        "Friday":["E","C","A","F","H+","B+","-","-","D+"]
-    }
-    useEffect(()=>{
-        model1tomodel2(model1);
-    })
-    function model1tomodel2(model1)
-    {
-        for(var i=0;i<9;i++)
+    let slotlist=[ 
         {
-            if(slotlist["Monday"][i]=='-')
-                model2["Monday"].push("-")
-            else if(!model1.includes(slotlist["Monday"][i]))
-                model2["Monday"].push("-")
-            else
-                model2["Monday"].push(model1[slotlist["Monday"][i]])
+            "day":"Monday",
+            "slots":["A","F","D","B","G","E+","-","-","H"]
+        },
+        {
+            "day":"Tuesday",
+            "slots":["B","G","E","C","A+","F+","-","-","H"]
+        },
+        {
+            "day":"Wednesday",
+            "slots":["C","A","F","D","H","G+","-","-","E+"]
+        },
+        {
+            "day":"Thursday",
+            "slots":["D","B","G","E","-","C+","-","-","G+"]
+        },
+        {
+            "day":"Friday",
+            "slots":["E","C","A","F","H+","B+","-","-","D+"]
         }
-        console.log(model2)
-    } */
-    let datas=[{"id":1,"first_name":"Jolyn","last_name":"Bellwood","email":"jbellwood0@fc2.com","date_of_birth":"5/20/2021"},
-    {"id":2,"first_name":"Ave","last_name":"Skedge","email":"askedge1@berkeley.edu","date_of_birth":"8/29/2021"},
-    {"id":3,"first_name":"Klaus","last_name":"Ocklin","email":"kocklin2@mail.ru","date_of_birth":"11/14/2020"},
-    {"id":"","first_name":"","last_name":""}
     ]
+    const [model2, setModel2] = useState([
+        {
+            "day":"Monday",
+            "slots":[]
+        },
+        {
+            "day":"Tuesday",
+            "slots":[]
+        },
+        {
+            "day":"Wednesday",
+            "slots":[]
+        },
+        {
+            "day":"Thursday",
+            "slots":[]
+        },
+        {
+            "day":"Friday",
+            "slots":[]
+        }
+    ]);
+    useEffect(()=>{
+        console.log("buha")
+        model1tomodel2();
+    },[])
+
+    function model1tomodel2()
+    {   console.log("before",model2)    
+        var model2temp=model2.map(item=>{return Object.assign({},item)})
+        console.log("after",model2temp)    
+        for(var j=0;j<5;j++)
+        {
+            for(var i=0;i<9;i++)
+            {
+                if(slotlist[j]["slots"][i]=='-')
+                    model2[j]["slots"].push("-")
+                else if(!(slotlist[j]["slots"][i] in model1))
+                    model2[j]["slots"].push("-")
+                else
+                    model2[j]["slots"].push(model1[slotlist[j]["slots"][i]])
+            }
+        }
+        console.log("temp",model2temp)
+        setModel2(model2temp,()=>{console.log("done")})
+    }
     return (
         <div>
              <table>
                 <tr>
+                    <th></th>
                     <th>08:00-09:00</th>
                     <th>09:00-10:00</th>
                     <th>10:15-11:15</th>
@@ -52,11 +86,17 @@ export default function Table() {/*
                     <th>16:00-17:00</th>
                     <th>17:00-18:00</th>
                 </tr>
-                {datas.map(data=>(<tr>
-                    <th>Buha</th>
-                    <td>{data["id"]}</td>
-                    <td>{data["first_name"]}</td>
-                    <td>{data["last_name"]}</td>
+                {model2.map(data=>(<tr>
+                    <th>{data.day}</th>
+                    <td>{data.slots[0]}</td>
+                    <td>{data.slots[1]}</td>
+                    <td>{data.slots[2]}</td>
+                    <td>{data.slots[3]}</td>
+                    <td>{data.slots[4]}</td>
+                    <td>{data.slots[5]}</td>
+                    <td>{data.slots[6]}</td>
+                    <td>{data.slots[7]}</td>
+                    <td>{data.slots[8]}</td>
                 </tr>))
                 }
             </table>
