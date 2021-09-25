@@ -43,6 +43,7 @@ input[type=submit] {
 .entry label {
   text-align: left;
   display: block;
+  font-family: 'Lato', sans-serif;
 }
 .entry h2 {
   font-size: 20px;
