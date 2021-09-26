@@ -43,7 +43,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ---
 
-## Colect data from user
+## Collect data from user
 
 ![Data from user](img/Form.png)
 
