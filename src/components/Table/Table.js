@@ -3,10 +3,31 @@ import { useEffect } from 'react'
 
 export default function Table({final,model2,setModel2}) {
     const [tz,setTz] =useState("india")
+
+    let tr=document.getElementsByTagName("tr")
     function TZ_checker(event)
     {
         setTz(event.target.value)
     }
+
+    function colourchanger(subj,day,ind)
+    {
+        var legend={
+            "Monday":0,
+            "Tuesday":1,
+            "Wednesday":2,
+            "Thursday":3,
+            "Friday":4
+        }
+        var j=legend[day]
+        if (subj.length>0 && subj!=" ")
+        {
+            tr[j+1].children[1+ind].classList.remove('darkcell')
+        }
+        else
+        tr[j+1].children[1+ind].classList.add('darkcell')
+    }
+
     let tslotlist=[ 
         {"day":"Monday","slots":["A","F","D","B","G","E","-","-","H"]},
         {"day":"Tuesday","slots":["B","G","E","C","A","F","-","-","H"]},
@@ -36,11 +57,11 @@ export default function Table({final,model2,setModel2}) {
             {"day":"Thursday","slots":[]},
             {"day":"Friday","slots":[]}
         ]
-        var tr=document.getElementsByTagName("tr")
         for(var j=0;j<5;j++)
         {
             for(var i=0;i<9;i++)
             {
+                tr[j+1].children[1+i].classList.remove('plus')
                 if(tslotlist[j]["slots"][i]=='-')
                 {
                     model2temp[j]["slots"].push("")
@@ -55,6 +76,10 @@ export default function Table({final,model2,setModel2}) {
                 {
                     model2temp[j]["slots"].push(final[tslotlist[j]["slots"][i]])
                     tr[j+1].children[1+i].classList.remove('darkcell')
+                    if( (j==4&&i>3) || (j==1&&(i>3 && i<8)) || (j==0&&i==5) || ((j==2 ||j==3)&&i>4) )
+                    {
+                        tr[j+1].children[1+i].classList.add('plus')
+                    }
                 }
             }
         }
@@ -73,6 +98,9 @@ export default function Table({final,model2,setModel2}) {
                 tr[j+1].children[6].classList.remove("darkcell")
                 tr[j+1].children[7].classList.remove("darkcell")
                 tr[j+1].children[8].classList.remove("darkcell")
+                tr[j+1].children[6].classList.remove("plus")
+                tr[j+1].children[7].classList.remove("plus")
+                tr[j+1].children[8].classList.remove("plus")
                 model2temp[j].slots[5]=""
                 model2temp[j].slots[6]=final[pslotlist[j]["slots"]]
                 model2temp[j].slots[7]=""
@@ -138,15 +166,15 @@ export default function Table({final,model2,setModel2}) {
                 </tr>
                 {model2.map(data=>(<tr>
                     <th>{data.day}</th>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[0]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[1]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[2]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[3]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[4]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[5]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[6]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[7]}</p></td>
-                    <td><p suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[8]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,0)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[0]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,1)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[1]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,2)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[2]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,3)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[3]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,4)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[4]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,5)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[5]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,6)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[6]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,7)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[7]}</p></td>
+                    <td><p onBlur={(e)=>colourchanger(e.target.innerHTML,data.day,8)} suppressContentEditableWarning contentEditable spellCheck={false}> {data.slots[8]}</p></td>
                 </tr>))
                 }
             </table>

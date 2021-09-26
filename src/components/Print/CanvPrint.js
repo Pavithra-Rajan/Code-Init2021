@@ -11,7 +11,7 @@ export default function CanvPrint({slotlist}) {
         .then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF('l', 'in', [2.127700243, 5]);
-          pdf.addImage(imgData, 'PNG', 0, 0, 5,1.8);
+          pdf.addImage(imgData, 'PNG', 0, 0, 5,1.6);
           pdf.save("download.pdf");  
         });
       ;
@@ -21,7 +21,7 @@ export default function CanvPrint({slotlist}) {
 
     return (
         <div>
-            <button onClick={()=>save()}>Smash!</button>
+            <button id="exp" onClick={()=>save()}>Export as PDF</button>
         </div>
     )
 }

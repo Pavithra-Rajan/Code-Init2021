@@ -6,9 +6,7 @@ const Entry = ({final,setFinal}) => {
                <div className="fm">
                 <FormEntry final={final} setFinal={setFinal} />
                </div>
-               <div className="pc">
                <Pic />
-               </div>
                 
                
               

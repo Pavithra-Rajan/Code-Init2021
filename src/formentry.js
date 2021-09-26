@@ -15,13 +15,16 @@ const FormEntry = ({final,setFinal}) => {
         const s=e.target.S.value;
         const t=e.target.T.value;
         setFinal({"A":a,"B":b,"C":c,"D":d,"E":ee,"F":f,"G":g,"H":h,"P":p,"Q":q,"R":r,"S":s,"T":t});
-        e.target.reset();
+    }
+    function clear(e){
+        var form=document.getElementsByTagName("form")[0]
+        form.reset();
     }
     
     return ( 
         <div className="entry">
             <h2>Enter core subjects/electives</h2>
-            <form onSubmit={handleSubmit}>
+            <form name="subjects" onSubmit={handleSubmit}>
                 <div className="two-col">
                     <div className="col1">
                         <label>A: </label>
@@ -138,6 +141,7 @@ const FormEntry = ({final,setFinal}) => {
                     </div>
                 </div>
                 <input type="submit" value="Submit" />
+                <button id="clear" value="clear" onClick={()=>clear()}>Clear</button>
             </form>
           
         </div>

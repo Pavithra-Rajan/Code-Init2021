@@ -18,9 +18,11 @@ function App() {
   return (
     <div className="App">
       <h1>TimeTable App</h1>
-      <Entry final={final} setFinal={setFinal}/>
-      <Table final={final} model2={model2} setModel2={setModel2}></Table>
-      <CanvPrint></CanvPrint>
+      <div id="page">
+        <Entry final={final} setFinal={setFinal}/>
+        <Table final={final} model2={model2} setModel2={setModel2}></Table>
+        <CanvPrint></CanvPrint>
+      </div>
     </div>
   );
 }
