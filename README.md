@@ -1,12 +1,14 @@
 # Timetable Auto Generator
 
+hosted here: [https://timetable-nitc.netlify.app/](https://timetable-nitc.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm install`
 
-Install all the
+Install all the dependencies 
 
 ### `npm start`
 
@@ -43,7 +45,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ---
 
-## Colect data from user
+## Collect data from user
 
 ![Data from user](img/Form.png)
 
